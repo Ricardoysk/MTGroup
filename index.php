@@ -33,7 +33,7 @@
             <a href="#nosotros">Nosotros</a>
             <a href="#contenido">Contenido</a>
             <a href="#profesores">Profesores</a>
-            <a href="#login">Iniciar Sesión</a>
+            <a href="login.php">Iniciar Sesión</a>
          </nav>
 
          <div id="menu-btn" class="fas fa-bars"></div>
@@ -84,7 +84,7 @@
       <div class="row">
 
          <div class="image">
-            <img src="images/about-img.svg" alt="">
+            <img src="images/tips-para-tus-hijos-clases-online-1024x640.jpg" alt="">
          </div>
 
          <div class="content">
