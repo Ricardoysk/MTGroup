@@ -1,3 +1,13 @@
+<?php
+    include("database.php");
+    $con=conectar();
+
+    $sql="SELECT * FROM videos";
+    $query=mysqli_query($con,$sql);
+
+    $row=mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +37,8 @@
    <a href="#inicio" class="logo">MTgroup.</a>
 
    <nav class="navbar">
-      <a href="#contenido_admin">Contenido</a>
+      <a href="home.php">home</a>
+      <a href="contenido.php">Contenido</a>
       <a href="index.php">Cerrar Sesión</a>
    </nav>
 
@@ -47,7 +58,11 @@
     <h2 class="text-center">Registrar Video para la web</h2>
     <hr>
 
-    <form action="recibVideoYoutube.php" method="post">
+    <form action="controladorinsert.php" method="post">
+    <div class="form-group">
+      <label for="id">N° Registro</label>
+      <input type="text" name="id" class="form-control">
+    </div>
     <div class="form-group">
       <label for="nombreVideo">Nombre del Video</label>
       <input type="text" name="nombreVideo" class="form-control">
@@ -55,6 +70,10 @@
     <div class="form-group">
       <label for="urlVideo">Pegar URL del Video <em>(Desde Youtube)</em></label>
       <input type="text" name="urlVideo" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="nombreVideo">Descripción</label>
+      <input type="text" name="comentario" class="form-control">
     </div>
 
       <div class="form-group mb-5">
@@ -67,39 +86,6 @@
 
 <br><br>
 <br><br>
-  <?php 
-   require("database.php");
-    $sqlVideo   = ("SELECT * FROM videos ORDER BY id DESC ");
-    $queryVideo = mysqli_query($con, $sqlVideo);
-
-  ?>
-
-<h2 class="text-center mt-5 mb-3">Mis Videos de Youtube</h2>
-  <div class="table-responsive">
-    <table class="table table-hover table-striped">
-      <thead>
-        <tr>
-          <th>Titulo Video</th>
-          <th class="text-center">Video</th>
-           <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-      <?php
-        while ($dataVideo = mysqli_fetch_array($queryVideo)) { ?>
-        <tr>
-          <td><?php  echo $dataVideo['nombreVideo']; ?></td>
-          <td>
-            <iframe width="253" height="200" src="<?php echo $dataVideo['urlVideo']; ?>"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </td>
-          <td>
-            <a href="deleteVideoYoutube.php?idVideo=<?php echo $dataVideo['id']; ?>" class="btn btn-danger" onclick="return confirm('Estás seguro que deseas eliminar el Video?');">Borrar video</a>
-          </td>
-        </tr>
-      <?php } ?>
-      </tbody>
-    </table>
-  </div>
 
 </div>
 

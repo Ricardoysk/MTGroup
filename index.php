@@ -33,6 +33,7 @@
             <a href="#nosotros">Nosotros</a>
             <a href="#contenido">Contenido</a>
             <a href="#profesores">Profesores</a>
+            <a href="indexVideo.php">Contenido</a>
             <a href="login.php">Iniciar Sesión</a>
          </nav>
 

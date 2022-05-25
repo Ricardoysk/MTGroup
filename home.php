@@ -30,8 +30,8 @@
 
          <nav class="navbar">
             <a href="agregar.php">Agregar</a>
-            <a href="#contenido_admin">Contenido</a>
-            <a href="#">Cerrar Sesión</a>
+            <a href="contenido.php">Contenido</a>
+            <a href="index.php">Cerrar Sesión</a>
          </nav>
 
          <div id="menu-btn" class="fas fa-bars"></div>
