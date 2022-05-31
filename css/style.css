@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 
 :root{
-   --green:#00E77F;
-   --white:#fff;
-   --light-white:#aaa;
-   --black:#3d3d3d;
-   --light-bg:#4b4b4b;
+   --green:#4fb14f;
+   --white:rgb(0, 0, 0);
+   --light-white:rgba(0, 0, 0, 0.625);
+   --black:#6de0217d;
+   --light-bg:#59f360;
 }
 
 *{
@@ -46,6 +46,7 @@ html{
 
 body{
    background-color: var(--black);
+   margin: 0px;
 }
 
 section{
@@ -474,6 +475,14 @@ section{
 
 
 
+
+
+
+
+
+
+
+
 /* media queries  */
 
 @media (max-width:991px){
@@ -551,4 +560,30 @@ section{
        width: 100%;
    }
 
+}
+
+@media screen and (max-width: 600px) {
+   table {
+       width:100%;
+   }
+   thead {
+       display: none;
+   }
+   tr:nth-of-type(2n) {
+       background-color: inherit;
+   }
+   tr td:first-child {
+       background: #f0f0f0;
+       font-weight:bold;
+       font-size:1.3em;
+   }
+   tbody td {
+       display: block;
+       text-align:center;
+   }
+   tbody td:before {
+       content: attr(data-th);
+       display: block;
+       text-align:center;
+   }
 }

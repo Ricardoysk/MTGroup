@@ -1,3 +1,9 @@
+<?php 
+
+    $conex = mysqli_connect("localhost","root","","php_login_database_tmm_vs");
+
+?>
+
 <?php
 
     function conectar(){

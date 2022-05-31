@@ -43,7 +43,21 @@
    <!-- header section ends -->
 
 
+   <section class="home" id="inicio">
 
+      <div class="row">
+
+         <div class="content">
+            <h3>Bienvenido <span>Administrador</span></h3>
+         </div>
+
+         <div class="image">
+            <img src="images/homg-img.svg" alt="">
+         </div>
+
+      </div>
+
+   </section>
 
 
 

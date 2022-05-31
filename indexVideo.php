@@ -1,15 +1,3 @@
-<?php 
- require("database.php");
-
- $con=conectar();
-
-
-  $sqlVideo   = ("SELECT * FROM videos ORDER BY id DESC LIMIT 1");
-  $queryVideo = mysqli_query($con, $sqlVideo);
-  $totalVideo = mysqli_num_rows($queryVideo);
-  $DataVideo  = mysqli_fetch_array($queryVideo);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,42 +20,47 @@
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-  <!-- swiper css link  -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/video.css">
-  
-    <style type="text/css">
+<!-- swiper css link  -->
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+<!-- font awesome cdn link  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<!-- <style type="text/css">
     
-.video-responsive {
-position: relative;
-padding-bottom: 56.25%; /* 16/9 ratio */
-padding-top: 30px; /* IE6 workaround*/
-height: 0;
-overflow: hidden;
-}
-
-.video-responsive iframe,
-.video-responsive object,
-.video-responsive embed {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-}
-iframe{
-  width: 100%;
-  height: 100vh;
-}
-  </style>
+    .video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16/9 ratio */
+    padding-top: 30px; /* IE6 workaround*/
+    height: 0;
+    overflow: hidden;
+    }
+    
+    .video-responsive iframe,
+    .video-responsive object,
+    .video-responsive embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+    iframe{
+      width: 100%;
+      height: 100vh;
+    }
+      </style>
+       -->
 </head>
 <body>
+
+    <?php 
+        include("mostrar.php");
+    ?>
 
 <header class="header">
 
@@ -83,122 +76,18 @@ iframe{
 
 </section>
 
+<!-- Container m-5 ver en boostrap -->
+
 </header>
 
-<section class="tablevideo">
-
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Prueba</th>
-      <th scope="col">Prueba</th>
-      <th scope="col">Prueba</th>
-      <th scope="col">Prueba</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-  <div class="row text-center">
-        <div class="video">
-          <?php 
-          if( $totalVideo >0){ ?>
-          <h2><?php echo $DataVideo['nombreVideo']; ?></h2>
-
-          <div class="video-responsive">
-            <iframe  src="<?php echo $DataVideo['urlVideo']; ?>"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            </iframe>
-          </div>
-        <?php }else{ ?>
-        <h2>No hay Video</h2>
-        <?php } ?>
-
-        </div>
-    
-  </tbody>
-</table>
-
-</section>
-
-
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
 
 
 
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+   <!-- swiper js link  -->
+   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-
-  <script src="js/script.js"></script>
-
-
-<script type="text/javascript">
-var TxtType = function(el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-};
-
-TxtType.prototype.tick = function() {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-
-    if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-    var that = this;
-    var delta = 200 - Math.random() * 100;
-
-    if (this.isDeleting) { delta /= 2; }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-    }
-
-    setTimeout(function() {
-    that.tick();
-    }, delta);
-};
-
-window.onload = function() {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
-    }
-    // INJECT CSS
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-    document.body.appendChild(css);
-};
-
-</script>
+   <!-- custom js file link  -->
+   <script src="js/script.js"></script>
 
 </body>
 </html>
