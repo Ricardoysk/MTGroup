@@ -37,7 +37,7 @@ if ($inc) {
     <div class="swiper-wrapper">
 
         <div class="swiper-slide slide">
-            <h1 class="heading"><?php echo $nombreVideo; ?></h1>
+            <h3 class="heading"><?php echo $nombreVideo; ?></h3>
             <br><?php echo $urlVideo; ?></br>
             <p><?php echo $comentario; ?></p>
         </div>
