@@ -26,17 +26,16 @@
 
 
 <?php
-if(!isset($_GET ['id'])){
-    die('error');
-    }   
-    require_once('database.php');
-    $sql = ("SELECT * FROM videos WHERE id = ?;");
-    $result = $conex->query($sql);
-    if($result->num_rows =0){
-        die('error');
-    }
-$mostrar = $result->fetch_row();
-print_r($data);
+
+    include("database.php");
+
+    $id = $_GET['id'];
+    $consulta = "SELECT * FROM videos  WHERE id=".$id."";
+    $result = mysqli_query($conex, $consulta);
+    $mostrar = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    
+
+
 ?>
     <div>
         <form action="sp_editar.php" method="post">
